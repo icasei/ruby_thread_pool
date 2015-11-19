@@ -21,7 +21,7 @@ Create a simple thread pool with 5 threads
 ```ruby
 require 'ruby_thread_pool'
 
-pool = RubyThreadPool.new 10
+pool = RubyThreadPool.new 5
 ```
 To enqueue parameterless worker thread for async processing
 
@@ -61,11 +61,11 @@ pool.stop_processing
 ```
 Those methods start or stop processing the jobs queue
 
-To synchronously wait for all worker threads to finish use wait_all
+To synchronously wait for all worker threads to finish use wait_all (this will start processing)
 ```ruby
 pool.wait_all
 ```
-To execute a block after ALL tasks have finished use:
+To execute a block after ALL tasks have finished use  (this will start processing):
 ```ruby
 pool.wait_all do
   do_finisher_work()
