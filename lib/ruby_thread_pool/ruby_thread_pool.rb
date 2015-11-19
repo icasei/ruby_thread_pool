@@ -54,8 +54,8 @@ class RubyThreadPool
             begin
               result = delegate.call(parameters)
               @callback.call result unless @callback.nil?
-            rescue Exception => e
-              @exception_callback.call e unless @exception_callback.nil?
+            rescue StandardError => err
+              @exception_callback.call err unless @exception_callback.nil?
             end
           end
         end
